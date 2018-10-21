@@ -1,42 +1,240 @@
-.data
+.eqv blue 0xC8
+.eqv hair 0x1B
+.eqv skin 0x5B
+.eqv shrt 0x6B
+.eqv pnts 0x19
 
+.globl render_standing
+.globl render_running1
+.globl render_running2
+.globl render_running3
+.globl render_running4
+.globl render_jump
+
+.data
 bitmap_begin: .word 0xFF000000
-standing: .byte 0x1B, 0x1B, 0x1B, 0x1B, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x5B, 0x5B, 0x5B, 0x5B, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x5B, 0x5B, 0x5B, 0x5B, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x5B, 0x5B, 0xC8, 0xC8, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x6B, 0x6B, 0x6B, 0x6B, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x6B, 0x6B, 0x6B, 0x6B, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x6B, 0x6B, 0x6B, 0x6B, 0xC8, 0xC8, 0x6B, 0x6B,
-				0x6B, 0x6B, 0x6B, 0x6B, 0x6B, 0x6B, 0x6B, 0x6B,
-				0x6B, 0x6B, 0x6B, 0x6B, 0x6B, 0x6B, 0xC8, 0xC8,
-				0x6B, 0x6B, 0x6B, 0x6B, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x6B, 0x6B, 0x6B, 0x6B, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x19, 0x19, 0x19, 0x19, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x19, 0x19, 0x19, 0x19, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x19, 0x19, 0x19, 0x19, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x19, 0x19, 0x19, 0x19, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x19, 0x19, 0x19, 0x19, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x19, 0x19, 0x19, 0x19, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x19, 0x19, 0x19, 0x19, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x19, 0x19, 0x19, 0x19, 0x19, 0x19, 0xC8, 0xC8,
-				0x19, 0x19, 0xC8, 0xC8, 0xC8, 0xC8, 0xC8, 0xC8,
-				0x19, 0x19, 0x19, 0x19, 0xC8, 0xC8, 0xC8, 0xC8
+standing: .byte hair, hair, hair, hair, blue, blue, blue, blue,
+				skin, skin, skin, skin, blue, blue, blue, blue,
+				skin, skin, skin, skin, blue, blue, blue, blue,
+				skin, skin, blue, blue, blue, blue, blue, blue,
+				shrt, shrt, shrt, shrt, blue, blue, blue, blue,
+				shrt, shrt, shrt, shrt, blue, blue, blue, blue,
+				shrt, shrt, shrt, shrt, blue, blue, shrt, shrt,
+				shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt,
+				shrt, shrt, shrt, shrt, shrt, shrt, blue, blue,
+				shrt, shrt, shrt, shrt, blue, blue, blue, blue,
+				shrt, shrt, shrt, shrt, blue, blue, blue, blue,
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue,
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue,
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue,
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue,
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue,
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue,
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue,
+				pnts, pnts, pnts, pnts, pnts, pnts, blue, blue,
+				pnts, pnts, blue, blue, blue, blue, blue, blue,
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue
+
+running1: .byte blue, blue, blue, blue, hair, hair, hair, hair, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, skin, skin, blue, blue, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, shrt, shrt, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, blue, blue, pnts, pnts, blue, blue, pnts, pnts, blue, blue, blue, blue, 
+				pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, pnts, pnts, blue, blue, blue, blue, 
+				pnts, pnts, blue, blue, blue, blue, blue, blue, pnts, pnts, blue, blue, blue, blue, 
+				pnts, pnts, blue, blue, blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, 
+				blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, pnts, pnts, blue, blue
+				
+running2: .byte blue, blue, hair, hair, hair, hair, blue, blue, blue, blue, 
+				blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, 
+				blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, 
+				blue, blue, skin, skin, blue, blue, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, 
+				blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, 
+				blue, blue, blue, blue, pnts, pnts, blue, blue, pnts, pnts, 
+				pnts, pnts, pnts, pnts, pnts, pnts, pnts, pnts, pnts, pnts, 
+				pnts, pnts, blue, blue, pnts, pnts, blue, blue, blue, blue, 
+				pnts, pnts, blue, blue, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, blue, blue, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, blue, blue, pnts, pnts, pnts, pnts, blue, blue
+
+running3: .byte blue, blue, hair, hair, hair, hair, blue, blue, blue, blue, 
+				blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, 
+				blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, 
+				blue, blue, skin, skin, blue, blue, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, 
+				blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, 
+				blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, 
+				blue, blue, pnts, pnts, blue, blue, pnts, pnts, pnts, pnts, 
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue, pnts, pnts, 
+				pnts, pnts, pnts, pnts, blue, blue, pnts, pnts, blue, blue, 
+				pnts, pnts, blue, blue, blue, blue, pnts, pnts, blue, blue, 
+				pnts, pnts, blue, blue, blue, blue, blue, blue, pnts, pnts, 
+				pnts, pnts, blue, blue, blue, blue, blue, blue, blue, blue, 
+				blue, blue, pnts, pnts, blue, blue, blue, blue, blue, blue
+
+running4: .byte blue, blue, blue, blue, blue, blue, hair, hair, hair, hair, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, skin, skin, blue, blue, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, shrt, shrt, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, blue, blue, pnts, pnts, pnts, pnts, blue, blue, pnts, pnts, pnts, pnts, blue, blue, 
+				blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, pnts, pnts, blue, blue, 
+				blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, pnts, pnts, blue, blue, 
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, 
+				pnts, pnts, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, 
+				pnts, pnts, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue
+
+jump: .byte blue, blue, blue, blue, blue, blue, hair, hair, hair, hair, blue, blue, blue, blue, blue, blue, 
+			blue, blue, blue, blue, blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, blue, blue, 
+			blue, blue, blue, blue, blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, blue, blue, 
+			blue, blue, blue, blue, blue, blue, skin, skin, blue, blue, blue, blue, blue, blue, blue, blue, 
+			blue, blue, blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+			blue, blue, blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, shrt, shrt, blue, blue, 
+			blue, blue, blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, 
+			blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+			blue, blue, shrt, shrt, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+			blue, blue, shrt, shrt, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+			blue, blue, blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+			blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, blue, blue, 
+			blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, 
+			pnts, pnts, pnts, pnts, blue, blue, pnts, pnts, pnts, pnts, blue, blue, pnts, pnts, blue, blue, 
+			blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, blue, blue, pnts, pnts, blue, blue, 
+			blue, blue, blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, pnts, pnts, pnts, pnts
 
 .text
 
 # a0 = coordenada x
 # a1 = coordenada y
-renderStanding:
-	addi a0, zero, 311
-	addi a1, zero, 21
-	la a2, standing # carrega o endereco da sprite standing
+render_standing:
+	addi sp, sp, -4 # aloca 1 espaco na pilha
+	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+
+	la   a2, standing # carrega o endereco da sprite standing
 	addi a3, zero, 8  # w = 8
 	addi a4, zero, 21 # h = 21
-	
 	call renderSprite
-	addi a7, zero, 10
-	ecall
+	
+	lw   ra, 0(sp) # restaura o valor de ra
+	addi sp, sp 4  # desaloca 1 espaco na pilha
+	
+	ret
+	
+# a0 = coordenada x
+# a1 = coordenada y
+render_running1:
+	addi sp, sp, -4 # aloca 1 espaco na pilha
+	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+
+	la   a2, running1 # carrega o endereco da sprite running1
+	addi a3, zero, 14 # w = 14
+	addi a4, zero, 20 # h = 20	
+	call renderSprite
+	
+	lw   ra, 0(sp) # restaura o valor de ra
+	addi sp, sp 4  # desaloca 1 espaco na pilha
+	
+	ret
+
+# a0 = coordenada x
+# a1 = coordenada y	
+render_running2:
+	addi sp, sp, -4 # aloca 1 espaco na pilha
+	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+
+	la   a2, running2 # carrega o endereco da sprite running2
+	addi a3, zero, 10 # w = 10
+	addi a4, zero, 21 # h = 21	
+	call renderSprite
+	
+	lw   ra, 0(sp) # restaura o valor de ra
+	addi sp, sp 4  # desaloca 1 espaco na pilha
+	
+	ret
+
+# a0 = coordenada x
+# a1 = coordenada y	
+render_running3:
+	addi sp, sp, -4 # aloca 1 espaco na pilha
+	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+
+	la   a2, running3 # carrega o endereco da sprite running3
+	addi a3, zero, 10 # w = 10
+	addi a4, zero, 21 # h = 21	
+	call renderSprite
+	
+	lw   ra, 0(sp) # restaura o valor de ra
+	addi sp, sp 4  # desaloca 1 espaco na pilha
+	
+	ret
+	
+# a0 = coordenada x
+# a1 = coordenada y	
+render_running4:
+	addi sp, sp, -4 # aloca 1 espaco na pilha
+	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+
+	la   a2, running4 # carrega o endereco da sprite running4
+	addi a3, zero, 16 # w = 16
+	addi a4, zero, 20 # h = 20	
+	call renderSprite
+	
+	lw   ra, 0(sp) # restaura o valor de ra
+	addi sp, sp 4  # desaloca 1 espaco na pilha
+	
+	ret
+	
+# a0 = coordenada x
+# a1 = coordenada y	
+render_jump:
+	addi sp, sp, -4 # aloca 1 espaco na pilha
+	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+
+	la   a2, jump     # carrega o endereco da sprite jump
+	addi a3, zero, 16 # w = 16
+	addi a4, zero, 16 # h = 16	
+	call renderSprite
+	
+	lw   ra, 0(sp) # restaura o valor de ra
+	addi sp, sp 4  # desaloca 1 espaco na pilha
+	
+	ret
 
 # Essa funcao renderiza uma sprite na tela, dado endereco da sprite, largura, altura e coordenadas (x,y)
 # a0 = coordenada x do bitmap display onde comeca a renderizacao
@@ -75,14 +273,3 @@ renderSprite:
 			jal zero, loop_render
 	loop_render_end:
 	ret # retorna
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
