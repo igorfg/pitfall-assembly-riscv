@@ -1,0 +1,23 @@
+P3
+16, 20
+255
+blue, blue, blue, blue, blue, blue, hair, hair, hair, hair, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, skin, skin, skin, skin, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, skin, skin, blue, blue, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, shrt, shrt, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, 
+				blue, blue, blue, blue, shrt, shrt, shrt, shrt, shrt, shrt, shrt, shrt, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, shrt, shrt, shrt, shrt, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, pnts, pnts, blue, blue, blue, blue, 
+				blue, blue, blue, blue, pnts, pnts, pnts, pnts, blue, blue, pnts, pnts, pnts, pnts, blue, blue, 
+				blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, pnts, pnts, blue, blue, 
+				blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, pnts, pnts, blue, blue, 
+				pnts, pnts, pnts, pnts, blue, blue, blue, blue, blue, blue, blue, blue, pnts, pnts, pnts, pnts, 
+				pnts, pnts, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, 
+				pnts, pnts, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue 
