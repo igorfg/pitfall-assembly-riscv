@@ -3,3 +3,10 @@
 2 81 218    -> blue
 92 186 92   -> shrt
 53 95 24    -> pnts
+17 72 0     -> leaf
+95 144 47   -> jngl # verde claro da floresta
+8 27 0      -> trnk # tronco das arvores
+0 0 0       -> blak
+159 174 29  -> flr1 # chao onde o pitfall harry pisa
+88 104 0    -> flr2 # chao que fica abaixo do chao do pitfall harry
+222 222 222 -> whte # branco das letras da activision

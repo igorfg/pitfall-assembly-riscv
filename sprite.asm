@@ -1,8 +1,8 @@
-.eqv blue 0xC8
-.eqv hair 0x1B
-.eqv skin 0x5B
-.eqv shrt 0x6B
-.eqv pnts 0x19
+.eqv blue 0xC7 # hitbot c7 para habilitar transparente C8 para azul
+.eqv hair 0x1B # cabelo 0x1B original
+.eqv skin 0x5B # pele   0x5B original
+.eqv shrt 0x07 # camisa 0x6B original
+.eqv pnts 0xC0 # calca  0x19 original
 
 .globl render_standing
 .globl render_running1
@@ -10,6 +10,7 @@
 .globl render_running3
 .globl render_running4
 .globl render_jump
+.globl render_background
 
 .data
 bitmap_begin: .word 0xFF000000
@@ -139,6 +140,22 @@ jump: .byte blue, blue, blue, blue, blue, blue, hair, hair, hair, hair, blue, bl
 			blue, blue, blue, blue, pnts, pnts, pnts, pnts, blue, blue, blue, blue, pnts, pnts, pnts, pnts
 
 .text
+
+# a0 = coordenada x
+# a1 = coordenada y
+render_background:
+	addi sp, sp, -4 # aloca 1 espaco na pilha
+	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+
+	la   a2, background # carrega o endereco da sprite standing
+	addi a3, zero, 320   # w = 320
+	addi a4, zero, 240   # h = 240
+	call renderSprite
+	
+	lw   ra, 0(sp) # restaura o valor de ra
+	addi sp, sp 4  # desaloca 1 espaco na pilha
+	
+	ret
 
 # a0 = coordenada x
 # a1 = coordenada y
