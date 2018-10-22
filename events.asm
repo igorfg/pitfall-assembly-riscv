@@ -38,7 +38,8 @@ walk_left:
 walk_right:
 	addi sp, sp, -4
 	sw   ra, 0(sp)
-
+	
+	call restore_background
 	addi s0, s0, 1 # anda 1 pixel para a direita
 	
 	add a0, zero, s0 # x = s0
