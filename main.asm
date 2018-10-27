@@ -1,13 +1,11 @@
-.globl current_harry_sprite
-
 .data
-	current_harry_sprite: .word 0
 
 .text
 
 main:
 	addi s0, zero, 0   # posicao x inicial do pitfall harry
 	addi s1, zero, 125 # posicao y inicial do pitfall harry
+	addi s2, zero, 0   # sprite atual
 
 	addi a0, zero, 0     # x = 0
 	addi a1, zero, 0     # y = 0
@@ -17,8 +15,10 @@ main:
 	addi a1, zero, 125   # y = 0
 	call render_standing
 	
+	li s3, 10000 # contador de keyboard polling
+	
 loop_infinito:	call handle_keyboard_event
-	#li t0, 100    # cnt = 100
+	#li t0, 40000    # cnt = 100
 	#fps_cap: beq t0, zero, fps_cap_end
 	#	addi t0, t0, -1 # cnt -= 1
 	#	jal zero, fps_cap

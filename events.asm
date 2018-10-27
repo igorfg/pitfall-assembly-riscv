@@ -15,6 +15,7 @@ handle_keyboard_event:
    	beq t1, zero, not_moving # se nao ha tecla pressionada entao vai para FIM
    	
    	lw t2, 4(t0) # carrega a tecla pressionada
+   	#sw t2, 12(t0) # joga no mmio
    	
    	addi t3, zero, 74     # se a tecla pressionada for J
    	beq t2, t3, walk_left # anda para a esquerda
@@ -32,11 +33,15 @@ continue:
 	ret
    	
 not_moving:
-	la t4, current_harry_sprite # carrega endereco onde esta a sprite atual do harry
-	lw t4, 0(t4)                # carrega o valor da sprite atual do harry
 	addi t5, zero, 0            # valor para ser comparado com a sprite atual = 0
-	beq t4, t5, continue        # caso o harry ja esteja parado nao sera necessario renderiza-lo novamente
+	beq s2, t5, continue        # caso o harry ja esteja parado nao sera necessario renderiza-lo novamente
 	
+	addi s3, s3, -1
+	beq s3, zero, not_moving_for_real
+	jal zero, continue
+	
+not_moving_for_real:
+	li s3, 10000
 	call restore_background # restaura o fundo antes de renderizar a proxima imagem
 	add a0, zero, s0        # x = x atual
 	add a1, zero, s1        # y = y atual
@@ -60,8 +65,39 @@ walk_right:
 	
 	add a0, zero, s0 # x = s0
 	add a1, zero, s1 # y = s1
-	call render_running1
 	
+	beq s2, zero, running1
+	
+	addi t0, zero, 1
+	beq  s2, t0, running2
+	
+	addi t0, zero, 2
+	beq  s2, t0, running3
+	
+	addi t0, zero, 3
+	beq  s2, t0, running4
+	
+	addi t0, zero, 4
+	beq  s2, t0, running5
+	
+	addi t0, zero, 5
+	beq  s2, t0, running1
+	
+running1:
+	call render_running1
+	jal zero, continue_right
+running2:
+	call render_running2
+	jal zero, continue_right
+running3:
+	call render_running3
+	jal zero, continue_right
+running4:
+	call render_running4
+	jal zero, continue_right
+running5:
+	call render_jump
+continue_right:
 	jal zero, continue # termina a leitura do teclado
 	
 	
