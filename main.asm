@@ -1,7 +1,11 @@
+.globl current_harry_sprite
+
+.data
+	current_harry_sprite: .word 0
+
 .text
 
 main:
-
 	addi s0, zero, 0   # posicao x inicial do pitfall harry
 	addi s1, zero, 125 # posicao y inicial do pitfall harry
 
@@ -14,7 +18,13 @@ main:
 	call render_standing
 	
 loop_infinito:	call handle_keyboard_event
-	call loop_infinito
+	#li t0, 100    # cnt = 100
+	#fps_cap: beq t0, zero, fps_cap_end
+	#	addi t0, t0, -1 # cnt -= 1
+	#	jal zero, fps_cap
+	#fps_cap_end:
+	
+	jal zero, loop_infinito
 	
 	
 	

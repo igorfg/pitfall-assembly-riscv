@@ -188,6 +188,10 @@ restore_background:
 render_standing:
 	addi sp, sp, -4 # aloca 1 espaco na pilha
 	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+	
+	la t0, current_harry_sprite # carrega endereco onde esta a sprite atual do harry
+	addi t1, zero, 0            # valor da sprite atual = 0
+	sw t1, 0(t0)                # sprite_atual = standing
 
 	la   a2, standing # carrega o endereco da sprite standing
 	addi a3, zero, 8  # w = 8
@@ -205,6 +209,10 @@ render_standing:
 render_running1:
 	addi sp, sp, -4 # aloca 1 espaco na pilha
 	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+	
+	la t0, current_harry_sprite # carrega endereco onde esta a sprite atual do harry
+	addi t1, zero, 1            # valor da sprite atual = 1
+	sw t1, 0(t0)                # sprite_atual = running1
 
 	la   a2, running1 # carrega o endereco da sprite running1
 	addi a3, zero, 14 # w = 14
@@ -222,6 +230,10 @@ render_running1:
 render_running2:
 	addi sp, sp, -4 # aloca 1 espaco na pilha
 	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+	
+	la t0, current_harry_sprite # carrega endereco onde esta a sprite atual do harry
+	addi t1, zero, 2            # valor da sprite atual = 2
+	sw t1, 0(t0)                # sprite_atual = running2
 
 	la   a2, running2 # carrega o endereco da sprite running2
 	addi a3, zero, 10 # w = 10
@@ -239,11 +251,15 @@ render_running2:
 render_running3:
 	addi sp, sp, -4 # aloca 1 espaco na pilha
 	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+	
+	la t0, current_harry_sprite # carrega endereco onde esta a sprite atual do harry
+	addi t1, zero, 3            # valor da sprite atual = 3
+	sw t1, 0(t0)                # sprite_atual = running3
 
 	la   a2, running3 # carrega o endereco da sprite running3
 	addi a3, zero, 10 # w = 10
 	addi a4, zero, 21 # h = 21
-	addi a5, zero, 0    # renderizacao parcial = false
+	addi a5, zero, 0  # renderizacao parcial = false
 	call renderSprite
 	
 	lw   ra, 0(sp) # restaura o valor de ra
@@ -256,6 +272,10 @@ render_running3:
 render_running4:
 	addi sp, sp, -4 # aloca 1 espaco na pilha
 	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+	
+	la t0, current_harry_sprite # carrega endereco onde esta a sprite atual do harry
+	addi t1, zero, 4            # valor da sprite atual = 4
+	sw t1, 0(t0)                # sprite_atual = running4
 
 	la   a2, running4 # carrega o endereco da sprite running4
 	addi a3, zero, 16 # w = 16
@@ -273,6 +293,10 @@ render_running4:
 render_jump:
 	addi sp, sp, -4 # aloca 1 espaco na pilha
 	sw   ra, 0(sp)  # guarda o valor de ra na pilha
+	
+	la t0, current_harry_sprite # carrega endereco onde esta a sprite atual do harry
+	addi t1, zero, 5            # valor da sprite atual = 5
+	sw t1, 0(t0)                # sprite_atual = jumping
 
 	la   a2, jump     # carrega o endereco da sprite jump
 	addi a3, zero, 16 # w = 16
