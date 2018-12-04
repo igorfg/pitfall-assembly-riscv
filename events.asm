@@ -45,23 +45,58 @@ not_moving_for_real:
 	call restore_background # restaura o fundo antes de renderizar a proxima imagem
 	add a0, zero, s0        # x = x atual
 	add a1, zero, s1        # y = y atual
-	call render_standing
 	
+	bge s2, zero, standing_front
+	call render_standing_reversed # se a sprite de movimento for < 0, printa parado invertido
 	jal zero, continue # termina a leitura do teclado
+	
+standing_front:	call render_standing
+				jal zero, continue # termina a leitura do teclado
 
 walk_left:
 	call restore_background
-	addi s0, s0, -1
+	addi s0, s0, -2 # anda 2 pixels para a esquerda
 	
-	add a0, zero, s0
-	add a1, zero, s1
-	call render_running2
-
+	add a0, zero, s0 # x = s0
+	add a1, zero, s1 # y = s1
+	
+	beq s2, zero, running1_reversed
+	
+	addi t0, zero, -1
+	beq  s2, t0, running2_reversed
+	
+	addi t0, zero, -2
+	beq  s2, t0, running3_reversed
+	
+	addi t0, zero, -3
+	beq  s2, t0, running4_reversed
+	
+	addi t0, zero, -4
+	beq  s2, t0, running5_reversed
+	
+	addi t0, zero, -5
+	beq  s2, t0, running1_reversed
+	
+running1_reversed:
+	call render_running1_reversed
+	jal zero, continue_left
+running2_reversed:
+	call render_running2_reversed
+	jal zero, continue_left
+running3_reversed:
+	call render_running3_reversed
+	jal zero, continue_left
+running4_reversed:
+	call render_running4_reversed
+	jal zero, continue_left
+running5_reversed:
+	call render_jump_reversed
+continue_left:
 	jal zero, continue # termina a leitura do teclado
 	
 walk_right:
 	call restore_background
-	addi s0, s0, 1 # anda 1 pixel para a direita
+	addi s0, s0, 2 # anda 1 pixel para a direita
 	
 	add a0, zero, s0 # x = s0
 	add a1, zero, s1 # y = s1
