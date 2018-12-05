@@ -2,8 +2,10 @@
 
 .text
 
+.globl main
+
 main:
-	addi s0, zero, 0   # posicao x inicial do pitfall harry
+	addi s0, zero, 10   # posicao x inicial do pitfall harry
 	addi s1, zero, 125 # posicao y inicial do pitfall harry
 	addi s2, zero, 0   # sprite atual
 
@@ -11,8 +13,8 @@ main:
 	addi a1, zero, 0     # y = 0
 	call render_background
 	
-	addi a0, zero, 0     # x = 0
-	addi a1, zero, 125   # y = 0
+	add a0, zero, s0     # x = 0
+	add a1, zero, s1   # y = 0
 	call render_standing
 	
 	li s3, 10000 # contador de keyboard polling

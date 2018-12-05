@@ -210,12 +210,12 @@ render_standing_reversed:
 	addi sp, sp, -4 # aloca 1 espaco na pilha
 	sw   ra, 0(sp)  # guarda o valor de ra na pilha
 	
-	addi s2, zero, 0  # valor da sprite atual = 0
-	la   a2, standing # carrega o endereco da sprite standing
-	addi a3, zero, 8  # w = 8
-	addi a4, zero, 21 # h = 21
-	addi a5, zero, 0  # renderizacao parcial = false
-	addi a6, zero, 1  # flipa horizontalmente
+	addi s2, zero, 1000  # valor da sprite atual = 10000
+	la   a2, standing    # carrega o endereco da sprite standing
+	addi a3, zero, 8     # w = 8
+	addi a4, zero, 21    # h = 21
+	addi a5, zero, 0     # renderizacao parcial = false
+	addi a6, zero, 1     # flipa horizontalmente
 	call renderSprite
 	
 	lw   ra, 0(sp) # restaura o valor de ra
@@ -399,7 +399,7 @@ render_jump_reversed:
 	addi a3, zero, 16 # w = 16
 	addi a4, zero, 16 # h = 16
 	addi a5, zero, 0  # renderizacao parcial = false
-	addi a6, zero, 1  # nao flipa horizontalmente
+	addi a6, zero, 1  # flipa horizontalmente
 	call renderSprite
 	
 	lw   ra, 0(sp) # restaura o valor de ra
