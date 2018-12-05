@@ -1,13 +1,12 @@
-.data
-
-.text
-
 .globl main
 
+.text
 main:
-	addi s0, zero, 10   # posicao x inicial do pitfall harry
+	addi s0, zero, 10  # posicao x inicial do pitfall harry
 	addi s1, zero, 125 # posicao y inicial do pitfall harry
 	addi s2, zero, 0   # sprite atual
+	addi t0, zero, 100
+	fmv.s.x fs0, t0    # contador de sprites 
 
 	addi a0, zero, 0     # x = 0
 	addi a1, zero, 0     # y = 0
@@ -25,6 +24,7 @@ loop_infinito:	call handle_keyboard_event
 	#	addi t0, t0, -1 # cnt -= 1
 	#	jal zero, fps_cap
 	#fps_cap_end:
+	#call draw_vine
 	
 	jal zero, loop_infinito
 	

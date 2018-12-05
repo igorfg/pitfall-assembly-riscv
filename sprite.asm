@@ -1,8 +1,8 @@
 .eqv blue 0xC7 # hitbot c7 para habilitar transparente C8 para azul
-.eqv hair 0x1B # cabelo 0x1B original
-.eqv skin 0x5B # pele   0x5B original
-.eqv shrt 0x07 # camisa 0x6B original
-.eqv pnts 0xC0 # calca  0x19 original
+.eqv hair 18 # cabelo 0x1B original
+.eqv skin 167 # pele   0x5B original
+.eqv shrt 106 # camisa 0x6B original
+.eqv pnts 17 # calca  0x19 original
 
 .globl render_standing, render_standing_reversed
 .globl render_running1, render_running1_reversed

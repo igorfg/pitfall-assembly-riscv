@@ -41,12 +41,15 @@ not_moving:
 	addi t5, zero, 1000         # caso seja uma sprite parada a esquerda
 	beq s2, t5, continue
 	
-	addi s3, s3, -1
-	beq s3, zero, not_moving_for_real
+	fmv.x.s t6, fs0
+	addi t6, t6, -1
+	beq t6, zero, not_moving_for_real
+	fmv.s.x fs0, t6
 	jal zero, continue
 	
 not_moving_for_real:
-	li s3, 10000
+	li t6, 1000
+	fmv.s.x fs0, t6
 	call restore_background # restaura o fundo antes de renderizar a proxima imagem
 	add a0, zero, s0        # x = x atual
 	add a1, zero, s1        # y = y atual
@@ -58,6 +61,9 @@ not_moving_for_real:
 standing_front:	call render_standing
 				jal zero, continue # termina a leitura do teclado
 
+################################################################################
+#################### CONTROLE DA MOVIMENTACAO ESQUERDA E DIREITA ###############
+################################################################################
 walk_left:
 	call restore_background
 	addi s0, s0, -2 # anda 2 pixels para a esquerda
@@ -125,17 +131,27 @@ walk_right:
 	
 	running1:
 		call render_running1
+		call render_running1
+		call render_running1
 		jal zero, continue_right
 	running2:
+		call render_running2
+		call render_running2
 		call render_running2
 		jal zero, continue_right
 	running3:
 		call render_running3
+		call render_running3
+		call render_running3
 		jal zero, continue_right
 	running4:
 		call render_running4
+		call render_running4
+		call render_running4
 		jal zero, continue_right
 	running5:
+		call render_jump
+		call render_jump
 		call render_jump
 	continue_right:
 		jal zero, continue # termina a leitura do teclado
@@ -162,7 +178,7 @@ jump:
 		add a0, zero, s0       # x
 		add a1, zero, s1       # y
 		
-		addi t2, zero, 5
+		addi t2, zero, 5                           # checa se eh sprite parado para direta ou salto para direita
 		beq s2, zero, jump_standing_up
 		bne s2, t2, loop_jump_standing_reversed_up
 	jump_standing_up:
@@ -191,7 +207,7 @@ jump:
 		add a1, zero, s1       # y
 		
 		addi t2, zero, 5
-		beq s2, zero, jump_standing_down
+		beq s2, zero, jump_standing_down                # checa se eh sprite parado para direta ou salto para direita
 		bne s2, t2, loop_jump_standing_reversed_down
 	jump_standing_down:
 		call render_jump
